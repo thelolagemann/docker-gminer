@@ -2,7 +2,7 @@
 
 ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/thelolagemann/gminer?style=flat-square)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/thelolagemann/docker-gminer/Build%20and%20publish%20docker%20image?style=flat-square)
-![Gminer version](https://img.shields.io/badge/gminer-v2.65-blue?style=flat-square)
+![Gminer version](https://img.shields.io/badge/gminer-v2.66-blue?style=flat-square)
 
 A docker container for quickly getting up and running with gminer.
 
