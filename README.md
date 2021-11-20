@@ -2,7 +2,7 @@
 
 ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/thelolagemann/gminer?style=flat-square)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/thelolagemann/docker-gminer/Build%20and%20publish%20docker%20image?style=flat-square)
-![Gminer version](https://img.shields.io/badge/gminer-v2.71-blue?style=flat-square)
+![Gminer version](https://img.shields.io/badge/gminer-v2.72-blue?style=flat-square)
 
 A docker container for quickly getting up and running with gminer.
 
@@ -81,4 +81,4 @@ build arguments you can pass during build.
 
 | Argument | Description | Default |
 | --- | --- | --- |
-| `GMINER_VERSION` | The version of gminer to build the container with. | `2.71` |
+| `GMINER_VERSION` | The version of gminer to build the container with. | `2.72` |
