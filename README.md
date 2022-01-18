@@ -4,10 +4,6 @@
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/thelolagemann/docker-gminer/Build%20and%20publish%20docker%20image?style=flat-square)
 ![Gminer version](https://img.shields.io/badge/gminer-v2.74-blue?style=flat-square)
 
-***Please Note: gminer currently has a contest running to win 25 x 0.2 ETH. See the post 
-[here](https://github.com/develsoftware/GMinerRelease/releases/tag/2.74) for more details. The environment variables
-have been updated to include `CONTEST_WALLET`.***
-
 A docker container for quickly getting up and running with gminer.
 
 ## Table of Contents
@@ -29,7 +25,6 @@ docker run -d \
   -e WALLET_ADDRESS="88yUzYzB9wrR2r2o1TzXxDMENr6Kbadr3caqKTBUNFZ3dWVt6sJcpWBAwMwNRtEi7nHcBcqzmExNfdNK7ughaCeUFuXXpPp" \
   -e MINING_ALGO="ethash" \
   -e MINING_POOL="gulf.moneroocean.stream:11024" \
-  -e CONTEST_WALLET="0x04d3121565832a60698ca62a390eea8fe7010a89" \
   --restart=always \
   thelolagemann/gminer:latest
 ```
@@ -50,7 +45,6 @@ docker run -d \
 | `MINING_ALGO` | Mining algo to use. | `ethash` |
 | `MINING_POOL` | URL of the mining pool to connect to. | `gulf.moneroocean.stream:11024` |
 | `PROTO` | Mining protocol to use. | `stratum` |
-| `CONTEST_WALLET` | ETH wallet for contest payout | (unset) |
 
 ## Docker Compose
 
@@ -68,7 +62,6 @@ services:
       - MINING_POOL: "gulf.moneroocean.stream:11024"
       - RIG_NAME: "gpu~ethash"
       - WALLET_ADDRESS: "88yUzYzB9wrR2r2o1TzXxDMENr6Kbadr3caqKTBUNFZ3dWVt6sJcpWBAwMwNRtEi7nHcBcqzmExNfdNK7ughaCeUFuXXpPp"
-      - CONTEST_WALLET: "0x04d3121565832a60698ca62a390eea8fe7010a89"
     deploy:
       resources:
         reservations:
