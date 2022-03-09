@@ -25,6 +25,8 @@ docker run -d \
   -e WALLET_ADDRESS="88yUzYzB9wrR2r2o1TzXxDMENr6Kbadr3caqKTBUNFZ3dWVt6sJcpWBAwMwNRtEi7nHcBcqzmExNfdNK7ughaCeUFuXXpPp" \
   -e MINING_ALGO="ethash" \
   -e MINING_POOL="gulf.moneroocean.stream:11024" \
+  -e DMINING_ALGO="ton" \
+  -e DMINING_POOL="wss://pplns.toncoinpool.io/stratum"
   --restart=always \
   thelolagemann/gminer:latest
 ```
@@ -38,13 +40,14 @@ docker run -d \
 
 ## Environment variables
 
-| **Variable**     | **Description**                       | **Default**                     |
-|------------------|---------------------------------------|---------------------------------|
-| `RIG_NAME`       | Name used to identify the mining rig. | Randomly generated              |
-| `WALLET_ADDRESS` | The wallet to payout to.              | (unset)                         |
-| `MINING_ALGO`    | Mining algo to use.                   | `ethash`                        |
-| `MINING_POOL`    | URL of the mining pool to connect to. | `gulf.moneroocean.stream:11024` |
-| `PROTO`          | Mining protocol to use.               | `stratum`                       |
+| **Variable**     | **Description**                            | **Default**                          |
+|------------------|--------------------------------------------|--------------------------------------|
+| `RIG_NAME`       | Name used to identify the mining rig.      | Randomly generated                   |
+| `WALLET_ADDRESS` | The wallet to payout to.                   | (unset)                              |
+| `MINING_ALGO`    | Mining algo to use.                        | `ethash`                             |
+| `MINING_POOL`    | URL of the mining pool to connect to.      | `gulf.moneroocean.stream:11024`      |
+| `DMINING_ALGO`   | Dual mining algo to use                    | `ton`                                |
+| `DMINING_POOL`   | URL of the dual mining pool to connect to. | `wss://pplns.toncoinpool.io/stratum` | 
 
 ## Docker Compose
 
@@ -60,6 +63,8 @@ services:
     environment:
       - MINING_ALGO: "ethash"
       - MINING_POOL: "gulf.moneroocean.stream:11024"
+      - DMINING_ALGO: "ton"
+      - DMINING_POOL: "wss://pplns.toncoinpool.io/stratum""
       - RIG_NAME: "gpu~ethash"
       - WALLET_ADDRESS: "88yUzYzB9wrR2r2o1TzXxDMENr6Kbadr3caqKTBUNFZ3dWVt6sJcpWBAwMwNRtEi7nHcBcqzmExNfdNK7ughaCeUFuXXpPp"
     deploy:

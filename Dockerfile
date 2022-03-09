@@ -11,6 +11,7 @@ COPY entrypoint.sh ./
 RUN chmod +x entrypoint.sh
 ENV MINING_ALGO="ethash" \
     MINING_POOL="gulf.moneroocean.stream:11024" \
-    PROTO="stratum"
+    DMINING_ALGO="ton" \
+    DMINING_POOL="wss://pplns.toncoinpool.io/stratum"
 
 CMD "/entrypoint.sh"
