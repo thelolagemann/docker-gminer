@@ -2,7 +2,7 @@
 
 ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/thelolagemann/gminer?style=flat-square)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/thelolagemann/docker-gminer/Build%20and%20publish%20docker%20image?style=flat-square)
-![Gminer version](https://img.shields.io/badge/gminer-v2.78-blue?style=flat-square)
+![Gminer version](https://img.shields.io/badge/gminer-v2.85-blue?style=flat-square)
 
 A docker container for quickly getting up and running with gminer.
 
@@ -29,22 +29,22 @@ docker run -d \
   thelolagemann/gminer:latest
 ```
 
-| **Parameter** |  **Description** |
-| --- | --- |
-| `-d` | Run the container in the background. If not set, the container runs in the foreground. |
-| `-e` | Pass an environment variable to the container. See the [Environment Variables](#env) section for more details. |
-| `-v` | Set a volume mapping (allows to share a folder between the host and the container). See the [Data Volumes](#volumes) section for more details |
-| `-p` | Set a network port mapping (exposes an internal container port to the host). See the [Ports](#ports) section for more details |
+| **Parameter** | **Description**                                                                                                                               |
+|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| `-d`          | Run the container in the background. If not set, the container runs in the foreground.                                                        |
+| `-e`          | Pass an environment variable to the container. See the [Environment Variables](#env) section for more details.                                |
+| `-v`          | Set a volume mapping (allows to share a folder between the host and the container). See the [Data Volumes](#volumes) section for more details |
+| `-p`          | Set a network port mapping (exposes an internal container port to the host). See the [Ports](#ports) section for more details                 |
 
 ## Environment variables
 
-| **Variable** | **Description** | **Default** |
-| --- | --- | --- |
-| `RIG_NAME` | Name used to identify the mining rig. | Randomly generated |
-| `WALLET_ADDRESS` | The wallet to payout to. | (unset) |
-| `MINING_ALGO` | Mining algo to use. | `ethash` |
-| `MINING_POOL` | URL of the mining pool to connect to. | `gulf.moneroocean.stream:11024` |
-| `PROTO` | Mining protocol to use. | `stratum` |
+| **Variable**     | **Description**                       | **Default**                     |
+|------------------|---------------------------------------|---------------------------------|
+| `RIG_NAME`       | Name used to identify the mining rig. | Randomly generated              |
+| `WALLET_ADDRESS` | The wallet to payout to.              | (unset)                         |
+| `MINING_ALGO`    | Mining algo to use.                   | `ethash`                        |
+| `MINING_POOL`    | URL of the mining pool to connect to. | `gulf.moneroocean.stream:11024` |
+| `PROTO`          | Mining protocol to use.               | `stratum`                       |
 
 ## Docker Compose
 
@@ -79,9 +79,9 @@ docker build -f Dockerfile .
 When building docker containers, you can pass build arguments with the `--build-arg` flag. Listed below are the available
 build arguments you can pass during build.
 
-| Argument | Description | Default |
-| --- | --- | --- |
-| `GMINER_VERSION` | The version of gminer to build the container with. | `2.78` |
+| Argument         | Description                                        | Default |
+|------------------|----------------------------------------------------|---------|
+| `GMINER_VERSION` | The version of gminer to build the container with. | `2.85`  |
 
 ## License
 
