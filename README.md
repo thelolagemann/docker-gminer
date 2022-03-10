@@ -25,6 +25,7 @@ docker run -d \
   -e WALLET_ADDRESS="88yUzYzB9wrR2r2o1TzXxDMENr6Kbadr3caqKTBUNFZ3dWVt6sJcpWBAwMwNRtEi7nHcBcqzmExNfdNK7ughaCeUFuXXpPp" \
   -e MINING_ALGO="ethash" \
   -e MINING_POOL="gulf.moneroocean.stream:11024" \
+  -e DWALLET_ADDRESS="EQDMgD4Gz-FEEgeQMEq24a3-2qE857yrlnvVngEP6obQJ8t3" \
   -e DMINING_ALGO="ton" \
   -e DMINING_POOL="wss://pplns.toncoinpool.io/stratum"
   --restart=always \
@@ -38,14 +39,15 @@ docker run -d \
 
 ## Environment variables
 
-| **Variable**     | **Description**                            | **Default**                          |
-|------------------|--------------------------------------------|--------------------------------------|
-| `RIG_NAME`       | Name used to identify the mining rig.      | Randomly generated                   |
-| `WALLET_ADDRESS` | The wallet to payout to.                   | (unset)                              |
-| `MINING_ALGO`    | Mining algo to use.                        | `ethash`                             |
-| `MINING_POOL`    | URL of the mining pool to connect to.      | `gulf.moneroocean.stream:11024`      |
-| `DMINING_ALGO`   | Dual mining algo to use                    | `ton`                                |
-| `DMINING_POOL`   | URL of the dual mining pool to connect to. | `wss://pplns.toncoinpool.io/stratum` | 
+| **Variable**      | **Description**                            | **Default**                          |
+|-------------------|--------------------------------------------|--------------------------------------|
+| `RIG_NAME`        | Name used to identify the mining rig.      | Randomly generated                   |
+| `WALLET_ADDRESS`  | The wallet to payout to.                   | (unset)                              |
+| `MINING_ALGO`     | Mining algo to use.                        | `ethash`                             |
+| `MINING_POOL`     | URL of the mining pool to connect to.      | `gulf.moneroocean.stream:11024`      |
+| `DMINING_ALGO`    | Dual mining algo to use                    | `ton`                                |
+| `DMINING_POOL`    | URL of the dual mining pool to connect to. | `wss://pplns.toncoinpool.io/stratum` | 
+| `DWALLET_ADDRESS` | The wallet to payout to for dual mining.   | (unset)                              |
 
 ## Docker Compose
 
@@ -56,20 +58,23 @@ Here is an example of a `docker-compose.yml` file that can be used with [docker-
 ```yaml
 version: "3.9"
 services:
-  xmrig-mo:
+  gminer:
     image: thelolagemann/gminer
     environment:
-      - MINING_ALGO: "ethash"
-      - MINING_POOL: "gulf.moneroocean.stream:11024"
-      - DMINING_ALGO: "ton"
-      - DMINING_POOL: "wss://pplns.toncoinpool.io/stratum"
-      - RIG_NAME: "gpu~ethash"
-      - WALLET_ADDRESS: "88yUzYzB9wrR2r2o1TzXxDMENr6Kbadr3caqKTBUNFZ3dWVt6sJcpWBAwMwNRtEi7nHcBcqzmExNfdNK7ughaCeUFuXXpPp"
+      MINING_ALGO: "ethash"
+      MINING_POOL: "gulf.moneroocean.stream:11024"
+      DMINING_ALGO: "ton"
+      DMINING_POOL: "wss://pplns.toncoinpool.io/stratum"
+      DWALLET_ADDRESS: "EQDMgD4Gz-FEEgeQMEq24a3-2qE857yrlnvVngEP6obQJ8t3"
+      RIG_NAME: "gpu~ethash"
+      WALLET_ADDRESS: "88yUzYzB9wrR2r2o1TzXxDMENr6Kbadr3caqKTBUNFZ3dWVt6sJcpWBAwMwNRtEi7nHcBcqzmExNfdNK7ughaCeUFuXXpPp"
     deploy:
       resources:
         reservations:
           devices:
-            - capabilities: [gpu]
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
 ```
 
 ## Building
