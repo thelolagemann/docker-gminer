@@ -31,12 +31,10 @@ docker run -d \
   thelolagemann/gminer:latest
 ```
 
-| **Parameter** | **Description**                                                                                                                               |
-|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
-| `-d`          | Run the container in the background. If not set, the container runs in the foreground.                                                        |
-| `-e`          | Pass an environment variable to the container. See the [Environment Variables](#env) section for more details.                                |
-| `-v`          | Set a volume mapping (allows to share a folder between the host and the container). See the [Data Volumes](#volumes) section for more details |
-| `-p`          | Set a network port mapping (exposes an internal container port to the host). See the [Ports](#ports) section for more details                 |
+| **Parameter** | **Description**                                                                                                                  |
+|---------------|----------------------------------------------------------------------------------------------------------------------------------|
+| `-d`          | Run the container in the background. If not set, the container runs in the foreground.                                           |
+| `-e`          | Pass an environment variable to the container. See the [Environment Variables](#environment-variables) section for more details. |
 
 ## Environment variables
 
@@ -64,7 +62,7 @@ services:
       - MINING_ALGO: "ethash"
       - MINING_POOL: "gulf.moneroocean.stream:11024"
       - DMINING_ALGO: "ton"
-      - DMINING_POOL: "wss://pplns.toncoinpool.io/stratum""
+      - DMINING_POOL: "wss://pplns.toncoinpool.io/stratum"
       - RIG_NAME: "gpu~ethash"
       - WALLET_ADDRESS: "88yUzYzB9wrR2r2o1TzXxDMENr6Kbadr3caqKTBUNFZ3dWVt6sJcpWBAwMwNRtEi7nHcBcqzmExNfdNK7ughaCeUFuXXpPp"
     deploy:
