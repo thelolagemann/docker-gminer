@@ -49,4 +49,5 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}-cuda${{ matrix.cuda_base }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            CUDA_BASE=${{ matrix.cuda_base }},UBUNTU_VERSION=${{ matrix.ubuntu_version }}
+            CUDA_BASE=${{ matrix.cuda_base }}
+            UBUNTU_VERSION=${{ matrix.ubuntu_version }}
