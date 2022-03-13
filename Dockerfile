@@ -7,7 +7,7 @@ RUN echo https://github.com/develsoftware/GMinerRelease/releases/download/${GMIN
 RUN curl -L "https://github.com/develsoftware/GMinerRelease/releases/download/${GMINER_VERSION}/gminer_${GMINER_VERSION/./_}_linux64.tar.xz" > gminer.tar.gz
 RUN mkdir /gminer && tar -xf gminer.tar.gz -C /gminer
 
-FROM nvidia/cuda:${CUDA_VERSION}-runtime
+FROM nvidia/cuda:${CUDA_BASE}-runtime
 COPY --from=builder /gminer /gminer
 COPY entrypoint.sh ./
 RUN chmod +x entrypoint.sh
