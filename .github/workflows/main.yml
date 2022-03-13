@@ -17,8 +17,9 @@ jobs:
   build_docker:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
-    matrix:
-      cuda_base: [9.2, 10.2, 11.2.2, 11.3.1, 11.4.3, 11.5.1, 11.6.0]
+    strategy:
+      matrix:
+        cuda_base: [9.2, 10.2, 11.2.2, 11.3.1, 11.4.3, 11.5.1, 11.6.0]
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
