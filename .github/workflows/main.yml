@@ -20,6 +20,7 @@ jobs:
     strategy:
       matrix:
         cuda_base: [11.2.2, 11.3.1, 11.4.3, 11.5.1, 11.6.0]
+        ubuntu_base: [20.04]
         include:
           - cuda_base: 9.2
             ubuntu_version: 18.04
