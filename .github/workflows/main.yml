@@ -43,6 +43,7 @@ jobs:
           images: thelolagemann/gminer
           tags: |
             type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
+            type=ref,event=tag
           flavor: |
             latest=true
             suffix=-cuda-${{ matrix.cuda_base }},onlatest=true
