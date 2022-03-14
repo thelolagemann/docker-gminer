@@ -7,10 +7,38 @@
 A docker container for quickly getting up and running with gminer.
 
 ## Table of Contents
+* [Requirements](#requirements)
+  * [AMD](#amd)
+  * [NVIDIA](#nvidia)
 * [Quick Start](#quick-start)
 * [Environment Variables](#environment-variables)
 * [Docker Compose](#docker-compose)
 * [Building](#building)
+
+## Requirements
+
+### AMD
+
+AMD GPUs are currently unsupported. See issue [#1](https://github.com/thelolagemann/docker-gminer/issues/1)
+
+### NVIDIA
+
+* [nvidia-drivers](https://www.nvidia.com/en-us/drivers/unix/) >= 418.81.07
+* [nvidia-docker2](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker)
+
+#### CUDA
+  
+Ensure you have the correct nvidia-drivers installed, and then run `nvidia-smi` in order to check your currently
+supported CUDA version. For example, 11.4 => `thelolagemann/gminer:latest-cuda-11.4.3`. Currently, images are 
+automatically generated on each new gminer release, for CUDA versions
+
+- 9.2
+- 10.2
+- 11.2.2
+- 11.3.1
+- 11.4.3
+- 11.5.1
+- 11.6.0
 
 ## Quick start
 
@@ -29,7 +57,7 @@ docker run -d \
   -e DMINING_ALGO="ton" \
   -e DMINING_POOL="wss://pplns.toncoinpool.io/stratum"
   --restart=always \
-  thelolagemann/gminer:latest
+  thelolagemann/gminer:latest-cuda-11.6.0
 ```
 
 | **Parameter** | **Description**                                                                                                                  |
@@ -59,7 +87,7 @@ Here is an example of a `docker-compose.yml` file that can be used with [docker-
 version: "3.9"
 services:
   gminer:
-    image: thelolagemann/gminer
+    image: thelolagemann/gminer:latest-cuda-11.6.0
     environment:
       MINING_ALGO: "ethash"
       MINING_POOL: "gulf.moneroocean.stream:11024"
@@ -80,16 +108,27 @@ services:
 ## Building
 In order to build the container run the command.
 
-```bash
-docker build -f Dockerfile .
+```shell
+docker build .
 ```
 
 When building docker containers, you can pass build arguments with the `--build-arg` flag. Listed below are the available
 build arguments you can pass during build.
 
-| Argument         | Description                                        | Default |
-|------------------|----------------------------------------------------|---------|
-| `GMINER_VERSION` | The version of gminer to build the container with. | `2.88`  |
+| Argument         | Description                                              | Default  |
+|------------------|----------------------------------------------------------|----------|
+| `GMINER_VERSION` | The version of gminer to build the container with.       | `2.88`   |
+| `CUDA_BASE`      | The version of CUDA to build the container with.         | `11.6.0` |
+| `UBUNTU_VERSION` | Ubuntu OS base container version.<sup>[1](#ubuntu)</sup> | `20.04`  |
+
+<sup><a name="ubuntu">1</a>: Check NVIDIA's [dockerhub](https://hub.docker.com/r/nvidia/cuda/tags?page=1&name=-runtime-ubuntu)
+to correctly match up the CUDA and Ubuntu versions.</sup>
+
+For example, to build a container with cuda version 11.6.0 and gminer 2.88, run the command
+
+```shell
+docker build --build-arg GMINER_VERSION=2.88 --build-arg CUDA_BASE=11.6.0 .
+```
 
 ## License
 
