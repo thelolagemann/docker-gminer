@@ -3,13 +3,13 @@ name: Build and publish docker image
 on:
   push:
     branches:
-      - 'main'
-      - 'actions-test'
+      - main
+    paths:
+      - 'Dockerfile'
+      - 'entrypoint.sh'
+      - '.github/workflows/main.yml'
     tags:
       - 'v*'
-    paths-ignore:
-      - '**.md'
-      - '.github/*'
   release:
     types: [published]
 
@@ -41,13 +41,18 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: thelolagemann/gminer
+          tags: |
+            type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
+          flavor: |
+            latest=true
+            suffix=-cuda-${{ matrix.cuda_base }},onlatest=true
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}-cuda${{ matrix.cuda_base }}
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             CUDA_BASE=${{ matrix.cuda_base }}
