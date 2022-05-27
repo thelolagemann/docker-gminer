@@ -3,7 +3,7 @@ ARG UBUNTU_VERSION=20.04
 
 FROM alpine:latest as builder
 RUN apk add curl tar xz
-ARG GMINER_VERSION=2.96
+ARG GMINER_VERSION=2.97
 RUN echo https://github.com/develsoftware/GMinerRelease/releases/download/${GMINER_VERSION}/gminer_${GMINER_VERSION/./_}_linux64.tar.xz
 RUN curl -L "https://github.com/develsoftware/GMinerRelease/releases/download/${GMINER_VERSION}/gminer_${GMINER_VERSION/./_}_linux64.tar.xz" > gminer.tar.gz
 RUN mkdir /gminer && tar -xf gminer.tar.gz -C /gminer
