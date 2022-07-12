@@ -2,12 +2,12 @@
 
 ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/thelolagemann/gminer?style=flat-square)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/thelolagemann/docker-gminer/Build%20and%20publish%20docker%20image?style=flat-square)
-![Gminer version](https://img.shields.io/badge/gminer-v3.01-blue?style=flat-square)
+![Gminer version](https://img.shields.io/badge/gminer-v3.03-blue?style=flat-square)
 
 A docker container for quickly getting up and running with gminer.
 
 ## Table of Contents
-* [Requirements](#requirements)
+* [Requirements](#Requirements)
   * [AMD](#amd)
   * [NVIDIA](#nvidia)
 * [Quick Start](#quick-start)
@@ -79,7 +79,7 @@ docker run -d \
 
 ## Docker Compose
 
-Here is an example of a `docker-compose.yml` file that can be used with [docker-compose](#https://docs.docker.com/compose).
+Here is an example of a `docker-compose.yml` file that can be used with [docker-compose](https://docs.docker.com/compose).
 
 **NOTE**: Make sure to adjust the configuration according to your needs.
 
@@ -117,17 +117,17 @@ build arguments you can pass during build.
 
 | Argument         | Description                                              | Default  |
 |------------------|----------------------------------------------------------|----------|
-| `GMINER_VERSION` | The version of gminer to build the container with.       | `3.01`   |
+| `GMINER_VERSION` | The version of gminer to build the container with.       | `3.03`   |
 | `CUDA_BASE`      | The version of CUDA to build the container with.         | `11.6.0` |
 | `UBUNTU_VERSION` | Ubuntu OS base container version.<sup>[1](#ubuntu)</sup> | `20.04`  |
 
 <sup><a name="ubuntu">1</a>: Check NVIDIA's [dockerhub](https://hub.docker.com/r/nvidia/cuda/tags?page=1&name=-runtime-ubuntu)
 to correctly match up the CUDA and Ubuntu versions.</sup>
 
-For example, to build a container with cuda version 11.6.0 and gminer 3.01, run the command
+For example, to build a container with cuda version 11.6.0 and gminer 3.03, run the command
 
 ```shell
-docker build --build-arg GMINER_VERSION=3.01 --build-arg CUDA_BASE=11.6.0 .
+docker build --build-arg GMINER_VERSION=3.03 --build-arg CUDA_BASE=11.6.0 .
 ```
 
 ## License
