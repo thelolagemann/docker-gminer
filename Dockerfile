@@ -1,4 +1,4 @@
-ARG CUDA_BASE=11.6.0
+ARG CUDA_BASE=11.6.1
 ARG UBUNTU_VERSION=20.04
 
 FROM alpine:latest as builder
