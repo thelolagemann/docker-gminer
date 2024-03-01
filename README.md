@@ -32,8 +32,6 @@ Ensure you have the correct nvidia-drivers installed, and then run `nvidia-smi` 
 supported CUDA version. For example, 11.4 => `thelolagemann/gminer:latest-cuda-11.4.3`. Currently, images are 
 automatically generated on each new gminer release, for CUDA versions
 
-- 9.2
-- 10.2
 - 11.2.2
 - 11.3.1
 - 11.4.3
@@ -117,17 +115,17 @@ build arguments you can pass during build.
 
 | Argument         | Description                                              | Default  |
 |------------------|----------------------------------------------------------|----------|
-| `GMINER_VERSION` | The version of gminer to build the container with.       | `3.17`   |
-| `CUDA_BASE`      | The version of CUDA to build the container with.         | `11.6.0` |
+| `GMINER_VERSION` | The version of gminer to build the container with.       | `3.43`   |
+| `CUDA_BASE`      | The version of CUDA to build the container with.         | `11.6.1` |
 | `UBUNTU_VERSION` | Ubuntu OS base container version.<sup>[1](#ubuntu)</sup> | `20.04`  |
 
 <sup><a name="ubuntu">1</a>: Check NVIDIA's [dockerhub](https://hub.docker.com/r/nvidia/cuda/tags?page=1&name=-runtime-ubuntu)
 to correctly match up the CUDA and Ubuntu versions.</sup>
 
-For example, to build a container with cuda version 11.6.0 and gminer 3.17, run the command
+For example, to build a container with cuda version 11.6.1 and gminer 3.43, run the command
 
 ```shell
-docker build --build-arg GMINER_VERSION=3.17 --build-arg CUDA_BASE=11.6.0 .
+docker build --build-arg GMINER_VERSION=3.43 --build-arg CUDA_BASE=11.6.1 .
 ```
 
 ## License
