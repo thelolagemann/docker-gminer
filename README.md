@@ -2,7 +2,7 @@
 
 ![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/thelolagemann/gminer?style=flat-square)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/thelolagemann/docker-gminer/main.yml)
-![Gminer version](https://img.shields.io/badge/gminer-v3.43-blue?style=flat-square)
+![Gminer version](https://img.shields.io/badge/gminer-v3.44-blue?style=flat-square)
 
 A docker container for quickly getting up and running with gminer.
 
@@ -115,17 +115,17 @@ build arguments you can pass during build.
 
 | Argument         | Description                                              | Default  |
 |------------------|----------------------------------------------------------|----------|
-| `GMINER_VERSION` | The version of gminer to build the container with.       | `3.43`   |
+| `GMINER_VERSION` | The version of gminer to build the container with.       | `3.44`   |
 | `CUDA_BASE`      | The version of CUDA to build the container with.         | `11.6.1` |
 | `UBUNTU_VERSION` | Ubuntu OS base container version.<sup>[1](#ubuntu)</sup> | `20.04`  |
 
 <sup><a name="ubuntu">1</a>: Check NVIDIA's [dockerhub](https://hub.docker.com/r/nvidia/cuda/tags?page=1&name=-runtime-ubuntu)
 to correctly match up the CUDA and Ubuntu versions.</sup>
 
-For example, to build a container with cuda version 11.6.1 and gminer 3.43, run the command
+For example, to build a container with cuda version 11.6.1 and gminer 3.44, run the command
 
 ```shell
-docker build --build-arg GMINER_VERSION=3.43 --build-arg CUDA_BASE=11.6.1 .
+docker build --build-arg GMINER_VERSION=3.44 --build-arg CUDA_BASE=11.6.1 .
 ```
 
 ## License
