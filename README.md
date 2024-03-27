@@ -53,7 +53,7 @@ docker run -d \
   -e MINING_POOL="gulf.moneroocean.stream:11024" \
   -e DWALLET_ADDRESS="EQDMgD4Gz-FEEgeQMEq24a3-2qE857yrlnvVngEP6obQJ8t3" \
   -e DMINING_ALGO="ton" \
-  -e DMINING_POOL="wss://pplns.toncoinpool.io/stratum"
+  -e DMINING_POOL="wss://pplns.toncoinpool.io/stratum" \
   --restart=always \
   thelolagemann/gminer:latest-cuda-11.6.0
 ```
