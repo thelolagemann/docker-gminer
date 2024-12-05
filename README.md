@@ -29,14 +29,12 @@ AMD GPUs are currently unsupported. See issue [#1](https://github.com/thelolagem
 #### CUDA
   
 Ensure you have the correct nvidia-drivers installed, and then run `nvidia-smi` in order to check your currently
-supported CUDA version. For example, 11.4 => `thelolagemann/gminer:latest-cuda-11.4.3`. Currently, images are 
+supported CUDA version. For example, 11.6 => `thelolagemann/gminer:latest-cuda-11.6.1`. Currently, images are 
 automatically generated on each new gminer release, for CUDA versions
 
-- 11.2.2
-- 11.3.1
-- 11.4.3
-- 11.5.1
-- 11.6.0
+- 11.6.1
+- 12.3.2
+- 12.6.3
 
 ## Quick start
 
@@ -48,14 +46,12 @@ Launch the miner with the following command:
 docker run -d \
   --name="gminer" \
   --gpus=all \
+  --runtime=nvidia \
   -e WALLET_ADDRESS="88yUzYzB9wrR2r2o1TzXxDMENr6Kbadr3caqKTBUNFZ3dWVt6sJcpWBAwMwNRtEi7nHcBcqzmExNfdNK7ughaCeUFuXXpPp" \
-  -e MINING_ALGO="ethash" \
+  -e MINING_ALGO="etchash" \
   -e MINING_POOL="gulf.moneroocean.stream:11024" \
-  -e DWALLET_ADDRESS="EQDMgD4Gz-FEEgeQMEq24a3-2qE857yrlnvVngEP6obQJ8t3" \
-  -e DMINING_ALGO="ton" \
-  -e DMINING_POOL="wss://pplns.toncoinpool.io/stratum" \
   --restart=always \
-  thelolagemann/gminer:latest-cuda-11.6.0
+  thelolagemann/gminer:latest-cuda-12.6.3
 ```
 
 | **Parameter** | **Description**                                                                                                                  |
@@ -69,7 +65,7 @@ docker run -d \
 |-------------------|--------------------------------------------|--------------------------------------|
 | `RIG_NAME`        | Name used to identify the mining rig.      | Randomly generated                   |
 | `WALLET_ADDRESS`  | The wallet to payout to.                   | (unset)                              |
-| `MINING_ALGO`     | Mining algo to use.                        | `ethash`                             |
+| `MINING_ALGO`     | Mining algo to use.                        | `etchash`                            |
 | `MINING_POOL`     | URL of the mining pool to connect to.      | `gulf.moneroocean.stream:11024`      |
 | `DMINING_ALGO`    | Dual mining algo to use                    | `ton`                                |
 | `DMINING_POOL`    | URL of the dual mining pool to connect to. | `wss://pplns.toncoinpool.io/stratum` | 
@@ -85,14 +81,11 @@ Here is an example of a `docker-compose.yml` file that can be used with [docker-
 version: "3.9"
 services:
   gminer:
-    image: thelolagemann/gminer:latest-cuda-11.6.0
+    image: thelolagemann/gminer:latest-cuda-12.6.3
     environment:
-      MINING_ALGO: "ethash"
+      MINING_ALGO: "etchash"
       MINING_POOL: "gulf.moneroocean.stream:11024"
-      DMINING_ALGO: "ton"
-      DMINING_POOL: "wss://pplns.toncoinpool.io/stratum"
-      DWALLET_ADDRESS: "EQDMgD4Gz-FEEgeQMEq24a3-2qE857yrlnvVngEP6obQJ8t3"
-      RIG_NAME: "gpu~ethash"
+      RIG_NAME: "gpu~etchash"
       WALLET_ADDRESS: "88yUzYzB9wrR2r2o1TzXxDMENr6Kbadr3caqKTBUNFZ3dWVt6sJcpWBAwMwNRtEi7nHcBcqzmExNfdNK7ughaCeUFuXXpPp"
     deploy:
       resources:
@@ -116,16 +109,16 @@ build arguments you can pass during build.
 | Argument         | Description                                              | Default  |
 |------------------|----------------------------------------------------------|----------|
 | `GMINER_VERSION` | The version of gminer to build the container with.       | `3.44`   |
-| `CUDA_BASE`      | The version of CUDA to build the container with.         | `11.6.1` |
+| `CUDA_BASE`      | The version of CUDA to build the container with.         | `12.6.3` |
 | `UBUNTU_VERSION` | Ubuntu OS base container version.<sup>[1](#ubuntu)</sup> | `20.04`  |
 
 <sup><a name="ubuntu">1</a>: Check NVIDIA's [dockerhub](https://hub.docker.com/r/nvidia/cuda/tags?page=1&name=-runtime-ubuntu)
 to correctly match up the CUDA and Ubuntu versions.</sup>
 
-For example, to build a container with cuda version 11.6.1 and gminer 3.44, run the command
+For example, to build a container with cuda version 12.6.3 and gminer 3.44, run the command
 
 ```shell
-docker build --build-arg GMINER_VERSION=3.44 --build-arg CUDA_BASE=11.6.1 .
+docker build --build-arg GMINER_VERSION=3.44 --build-arg CUDA_BASE=12.6.3 .
 ```
 
 ## License

@@ -1,4 +1,4 @@
-ARG CUDA_BASE=11.6.1
+ARG CUDA_BASE=12.6.3
 ARG UBUNTU_VERSION=20.04
 
 FROM alpine:latest as builder
@@ -12,7 +12,7 @@ FROM nvidia/cuda:${CUDA_BASE}-base-ubuntu${UBUNTU_VERSION}
 COPY --from=builder /gminer /gminer
 COPY entrypoint.sh ./
 RUN chmod +x entrypoint.sh
-ENV MINING_ALGO="ethash" \
+ENV MINING_ALGO="etchash" \
     MINING_POOL="gulf.moneroocean.stream:11024" 
 
 CMD "/entrypoint.sh"

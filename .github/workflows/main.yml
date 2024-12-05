@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        cuda_base: [11.6.1, 12.3.2]
+        cuda_base: [11.6.1, 12.3.2, 12.6.3]
         ubuntu_version: [20.04]
     steps:
       - name: Check out the repo
